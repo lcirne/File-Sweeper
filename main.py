@@ -4,6 +4,7 @@ import time
 from pathlib import Path
 from watchdog.observers import Observer
 from download_handler import DownloadHandler
+from sweeper import Sweeper
 
 VALID_OS = ['Darwin', 'Linux']
 
@@ -14,9 +15,13 @@ def main():
         sys.exit('Program not available for your operating system.')
     downloads_path = f'{Path.home()}/Downloads'
 
+    # Initialize sweeper for preliminary clean
+    sweeper = Sweeper(downloads_path)
+    sweeper.initial_sweep()
+
     # Initialize downloads watcher
     observer = Observer()
-    handler = DownloadHandler()
+    handler = DownloadHandler(downloads_path)
     observer.schedule(handler, path=downloads_path, recursive=False)
 
     print(f"Starting file system monitor on {downloads_path}...")

@@ -56,3 +56,9 @@ class Sweeper:
             if result.returncode != 0:
                 print(f'>>> Failed to move file {self.filepath}/{file} to directory {self.filepath}/{directory}')
         self.files.clear()
+
+    def initial_sweep(self):
+        '''Run a prelimenary clean when the program is initialized.'''
+        self.catalog_directory()
+        self.create_missing_dirs()
+        self.organize_files()

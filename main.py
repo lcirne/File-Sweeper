@@ -3,7 +3,6 @@ import platform
 import time
 from pathlib import Path
 from watchdog.observers import Observer
-from sweeper import Sweeper
 from download_handler import DownloadHandler
 
 VALID_OS = ['Darwin', 'Linux']
@@ -15,8 +14,7 @@ def main():
         sys.exit('Program not available for your operating system.')
     downloads_path = f'{Path.home()}/Downloads'
 
-    # Initialize sweeper
-    #sweeper = Sweeper(downloads_path)
+    # Initialize downloads watcher
     observer = Observer()
     handler = DownloadHandler()
     observer.schedule(handler, path=downloads_path, recursive=False)

@@ -2,7 +2,9 @@ import sys
 import platform
 import time
 from pathlib import Path
+from watchdog.observers import Observer
 from sweeper import Sweeper
+from download_handler import DownloadHandler
 
 VALID_OS = ['Darwin', 'Linux']
 
@@ -14,15 +16,21 @@ def main():
     downloads_path = f'{Path.home()}/Downloads'
 
     # Initialize sweeper
-    sweeper = Sweeper(downloads_path)
-    while True:
-        sweeper.catalog_directory()
-        sweeper.create_missing_dirs()
-        sweeper.organize_files()
-        print('-' * 30)
-        print('DIRECTORY SWEEPED')
-        print('-' * 30)
-        time.sleep(1)
+    #sweeper = Sweeper(downloads_path)
+    observer = Observer()
+    handler = DownloadHandler()
+    observer.schedule(handler, path=downloads_path, recursive=False)
+
+    print(f"Starting file system monitor on {downloads_path}...")
+    observer.start()
+
+    try:
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        observer.stop()
+        print("Monitor stopped.")
+    observer.join()
 
 
 if __name__=='__main__':

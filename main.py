@@ -15,6 +15,15 @@ def main():
         sys.exit('Program not available for your operating system.')
     downloads_path = f'{Path.home()}/Downloads'
 
+    print(r" ______ _ _             _____                                    __    ")
+    print(r"|  ____(_) |           / ____|                                   | |   ")
+    print(r"| |__   _| | ___ _____| (_____      _____  ___ _ __   ___ _ __   | |   ")
+    print(r"|  __| | | |/ _ \______\___ \ \ /\ / / _ \/ _ \ '_ \ / _ \ '__|  | |   ")
+    print(r"| |    | | |  __/      ____) \ V  V /  __/  __/ |_) |  __/ |   __| |__ ")
+    print(r"|_|    |_|_|\___|     |_____/ \_/\_/ \___|\___| .__/ \___|_|   |/|/|\| ")
+    print(r"                                              | |              |/|\|\| ")
+    print(r"                                              |_|              |/|\|/| ")
+
     # Initialize sweeper for preliminary clean
     sweeper = Sweeper(downloads_path)
     sweeper.initial_sweep()

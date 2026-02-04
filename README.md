@@ -7,14 +7,16 @@ Automates organization of downloaded files into subdirectories within the Downlo
 File-Sweeper is a lightweight utility for cleaning up your downloads directory without needing to manually move things around. It works by performing an intial scan of your downloads directory after installation and catalogging each unique `.extension`. It then creates a subdirectory for each extension type within your downloads and organizes files accordingly. Once this initial cleaning is complete, File-Sweeper creates an Observer using the watchdog library to monitor when a new file enters your downloads folder and it automatically categorizes that new download by extension and organizes it just as it did initially. 
 
 ## Installation
-Note: if on macOS ensure python is enabled to run in the background in settings.
+Note: if on macOS ensure python is enabled to run in the background in settings.  
+
+To install File-Sweeper you can run the following commands in a terminal:
 ```bash
 cd ~/.config
 git clone https://github.com/lcirne/file-sweeper.git
 cd File-Sweeper/utilities
 sh install.sh
 ```
-If experiencing permission issues, run `chmod +x *.sh`.
+If experiencing permission issues when trying to run `install.sh`, execute the command `chmod +x *.sh` in the utilities directory.
 
 If you need to pause File-Sweeper you can do so by running:
 ```bash

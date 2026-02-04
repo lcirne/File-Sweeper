@@ -10,8 +10,13 @@ File-Sweeper is a lightweight utility for cleaning up your downloads directory w
 Note: if on macOS ensure python is enabled to run in the background in settings.
 ```bash
 cd ~/.config
-git clone https://github.com/yourname/file-sweeper.git
-cd file-sweeper
+git clone https://github.com/lcirne/file-sweeper.git
+cd File-Sweeper/utilities
 sh install.sh
 ```
 If experiencing permission issues, run `chmod +x *.sh`.
+
+If you need to pause File-Sweeper you can do so by running:
+```bash
+sh ~/.config/File-Sweeper/utilities/uninstall.sh
+```
